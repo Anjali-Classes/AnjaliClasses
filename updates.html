@@ -7,12 +7,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         /* General Styling */
-        body {
+        body, html {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             background: linear-gradient(to bottom, #e0f7fa, #ffffff);
             color: #333;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
         }
 
         /* Header */
@@ -53,11 +54,13 @@
             font-size: 20px;
             margin-bottom: 10px;
             color: #00796b;
+            text-align: center; /* Centered for all screens */
         }
 
         .announcement p {
             font-size: 16px;
             color: #555;
+            text-align: center; /* Centers text on all screens */
         }
 
         /* Footer */
@@ -79,10 +82,12 @@
             }
             .announcement-container {
                 margin-top: 80px;
-                padding: 5px;
+                padding: 10px;
+                width: 90%; /* Ensures it fits within the screen */
             }
             .announcement {
                 padding: 15px;
+                margin: 10px 0;
             }
             .announcement h2 {
                 font-size: 18px;
@@ -120,12 +125,9 @@
     <script>
         // Array of Announcements
         const announcements = [
-            {
-              title: "29/01/2025",
-              content: "2025-26 12th batches are starting from 1st February "
-            },
-            { title: "29/01/2025", content: "10th Revisions are started"},
-            { title: "29/01/2025", content: "Parents Worship day will be celebrated on 14 February"}
+            { title: "29/01/2025", content: "2025-26 12th batches are starting from 1st February " },
+            { title: "29/01/2025", content: "10th Revisions are started" },
+            { title: "29/01/2025", content: "Parents Worship day will be celebrated on 14 February" }
         ];
 
         // Get Announcement Container
