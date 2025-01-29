@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes - Anjali Classes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent the whole page from scrolling */
+        }
+
+        /* Header */
+        .header {
+            background-color: #4A90E2;
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 0;
+            left: 5;
+        }
+
+        /* Notes Container (Full Screen) */
+        .notes-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            width: 90%;
+            max-width: 900px;
+            height: 80vh; /* Occupy most of the screen */
+            overflow-y: auto; /* Scrollable when content overflows */
+            margin-top: 80px; /* Space from the header */
+            margin-bottom: 80px; /* Space for the back button */
+            animation: fadeIn 1s ease-in-out; /* Animation for notes container */
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .notes-container h2 {
+            color: #4A90E2;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        /* Notes List */
+        .note-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            max-height: 60vh; /* Limit the list height */
+            overflow-y: auto; /* Scrollable when the list is too long */
+        }
+
+        .note-list li {
+            font-size: 18px;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 6px;
+            background: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.5s ease, transform 0.3s ease;
+        }
+
+        .note-list li:hover {
+            background: #e3efff;
+            transform: translateY(-3px); /* Lift effect on hover */
+        }
+
+        .note-list a {
+            text-decoration: none;
+            color: #4A90E2;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .note-list a:hover {
+            color: #357ABD; /* Change color on hover */
+        }
+
+        .note-list a img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 15px 20px;
+            background-color: #4A90E2;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            text-align: center;
+            width: 200px;
+            transition: background 0.5s ease, transform 0.3s ease;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            bottom: 20px; /* Raise it up from the bottom */
+        }
+
+        .back-btn:hover {
+            background-color: #357ABD;
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+
+        /* Responsive Design */
+        @media only screen and (max-width: 480px) {
+            .header {
+                font-size: 24px;
+            }
+            .notes-container {
+                width: 95%;
+                height: 70vh;
+                padding: 15px;
+            }
+            .note-list li {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">📚 Notes</div>
+
+    <div class="notes-container">
+        <h2>Download Notes</h2>
+        <ul class="note-list" id="notes-list">
+            <!-- Notes will be added dynamically here -->
+        </ul>
+    </div>
+
+    <a href="index.html" class="back-btn">⬅ Back to Home</a>
+
+    <script>
+        // List of Notes (Modify this to add more)
+        const notes = [
+            { name: "Physics - Motion and Laws", file: "sample1.pdf" },
+            { name: "Chemistry - Atomic Structure", file: "sample2.pdf" },
+            { name: "Mathematics - Algebra Basics", file: "sample3.pdf" },
+            { name: "Biology - Human Digestive System", file: "sample4.pdf" },
+            { name: "History - The French Revolution", file: "sample5.pdf" },
+            { name: "English - Grammar Rules", file: "sample6.pdf" },
+            { name: "Computer Science - Basics of Programming", file: "sample7.pdf" },
+            { name: "Physics - Work and Energy", file: "sample8.pdf" },
+            { name: "Mathematics - Trigonometry", file: "sample9.pdf" },
+            { name: "Chemistry - Chemical Reactions", file: "sample10.pdf" },
+            { name: "Economics - Demand and Supply", file: "sample11.pdf" },
+            { name: "Political Science - Indian Constitution", file: "sample12.pdf" },
+            { name: "Biology - Plant Reproduction", file: "sample13.pdf" },
+            { name: "Geography - Climate and Weather", file: "sample14.pdf" },
+            { name: "History - World War I", file: "sample15.pdf" }
+        ];
+
+        // Function to Generate Notes List
+        function loadNotes() {
+            const notesList = document.getElementById("notes-list");
+            notes.forEach(note => {
+                let listItem = document.createElement("li");
+                listItem.innerHTML = `
+                    <a href="${note.file}" download>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" alt="PDF">
+                        ${note.name}
+                    </a>
+                `;
+                notesList.appendChild(listItem);
+            });
+        }
+
+        // Load Notes on Page Load
+        loadNotes();
+    </script>
+
+</body>
+</html>

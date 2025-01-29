@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Structure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f5f5f5;
+            color: #333;
+            overflow: hidden; /* Prevent scrolling */
+        }
+        .header {
+            background-color: #008080;
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: 600;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-in-out;
+        }
+        .header1 {
+            background-color: #006666;
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: 600;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-in-out;
+        }
+        .sub-header {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #444;
+            animation: fadeInUp 0.8s ease-in-out;
+        }
+        .table-container {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-in-out;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px; /* Adjusted padding */
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px; /* Adjusted font size */
+        }
+        th {
+            background-color: #008080;
+            color: white;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+            transition: background-color 0.3s ease;
+        }
+        .note {
+            background-color: #e0f7f7;
+            padding: 12px;
+            font-weight: bold;
+            margin: 15px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease-in-out;
+        }
+        .note:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        @media only screen and (max-width: 480px) {
+            .header, .header1 {
+                font-size: 22px;
+                padding: 15px;
+            }
+            .sub-header {
+                font-size: 16px;
+            }
+            table {
+                font-size: 12px;
+            }
+            th, td {
+                padding: 6px;
+            }
+            .note {
+                font-size: 12px;
+                padding: 8px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">गुरु दक्षिणा</div>
+    <div class="header1">Fees Structure</div>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>CLASS</th>
+                <th>Fees</th>
+            </tr>
+            <tr><td>1st</td><td>400₹/Month</td></tr>
+            <tr><td>2nd</td><td>400₹/Month</td></tr>
+            <tr><td>3rd</td><td>400₹/Month</td></tr>
+            <tr><td>4th</td><td>500₹/Month</td></tr>
+            <tr><td>5th</td><td>500₹/Month</td></tr>
+            <tr><td>6th</td><td>600₹/Month</td></tr>
+            <tr><td>7th</td><td>700₹/Month</td></tr>
+            <tr><td>8th</td><td>800₹/Month</td></tr>
+            <tr><td>9th</td><td>900₹/Month</td></tr>
+            <tr><td>10th</td><td>1200₹/Month</td></tr>
+            <tr><td>11th</td><td>1500₹/Month</td></tr>
+            <tr><td>12th</td><td>2000₹/Month</td></tr>
+        </table>
+    </div>
+    <div class="note">Note: Scholarship will be given to needy students</div>
+</body>
+</html>

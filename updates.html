@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 26px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Announcement Container */
+        .announcement-container {
+            margin: 100px auto 20px;
+            max-width: 800px;
+            padding: 10px;
+        }
+
+        /* Individual Announcement */
+        .announcement {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-in-out forwards;
+        }
+
+        .announcement h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #00796b;
+        }
+
+        .announcement p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .header {
+                font-size: 22px;
+                padding: 15px;
+            }
+            .announcement-container {
+                margin-top: 80px;
+                padding: 5px;
+            }
+            .announcement {
+                padding: 15px;
+            }
+            .announcement h2 {
+                font-size: 18px;
+            }
+            .announcement p {
+                font-size: 14px;
+            }
+        }
+
+        /* Scroll Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">📢 Announcements</div>
+
+    <!-- Announcement Container -->
+    <div class="announcement-container" id="announcements"></div>
+
+    <!-- Footer -->
+    <div class="footer">© 2025 All Rights Reserved | Anjali Classes</div>
+
+    <!-- JavaScript to Add Announcements Dynamically -->
+    <script>
+        // Array of Announcements
+        const announcements = [
+            {
+              title: "29/01/2025",
+              content: "2025-26 12th batches are starting from 1st February "
+            },
+            { title: "27/01/2025", content: "We are excited to announce the launch of our new Advanced Programming Course! Enroll now to level up your skills." },
+            { title: "20/01/2025", content: "The final exam schedule has been updated. Please check the official website for the latest timetable." },
+            { title: "18/01/2025", content: "Applications for the 2025 scholarship program are now open! Apply before March 15th to avail the benefits." },
+            { title: "💼 Job Fair 2025", content: "Our annual Job Fair will be held on April 10th. Meet top recruiters and explore career opportunities!" },
+            { title: "🎭 Cultural Fest Registration", content: "Registrations for the Annual Cultural Fest are now open! Participate and showcase your talents." }
+        ];
+
+        // Get Announcement Container
+        const announcementContainer = document.getElementById("announcements");
+
+        // Generate Announcements Dynamically
+        announcements.forEach((announcement, index) => {
+            const announcementDiv = document.createElement("div");
+            announcementDiv.classList.add("announcement");
+            announcementDiv.style.animationDelay = `${index * 0.2}s`; // Adds delay for staggered animation
+            announcementDiv.innerHTML = `
+                <h2>${announcement.title}</h2>
+                <p>${announcement.content}</p>
+            `;
+            announcementContainer.appendChild(announcementDiv);
+        });
+    </script>
+
+</body>
+</html>
