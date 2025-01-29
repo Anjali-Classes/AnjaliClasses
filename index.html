@@ -18,7 +18,7 @@
 
         /* Header Section */
         .header {
-            background-color: #FF7F50; /* Changed to orange */
+            background-color: #FF7F50;
             color: white;
             padding: 20px;
             font-size: 28px;
@@ -44,11 +44,19 @@
             color: #555;
         }
 
+        /* Motto Styling */
         .motto {
             font-size: 18px;
             font-style: italic;
-            margin: 10px 0;
-            color: #FF7F50; /* Changed to orange */
+            font-weight: 600;
+            margin: 15px auto;
+            color: #FF7F50;
+            background: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            max-width: 500px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.2s;
         }
 
         /* Features Section */
@@ -77,7 +85,7 @@
 
         .content li::before {
             content: "✔";
-            color: #FF7F50; /* Changed to orange */
+            color: #FF7F50;
             font-weight: bold;
             position: absolute;
             left: 5px;
@@ -97,7 +105,7 @@
 
         .btn {
             display: block;
-            background-color: #FF7F50; /* Changed to orange */
+            background-color: #FF7F50;
             color: white;
             padding: 15px;
             margin: 10px auto;
@@ -114,7 +122,7 @@
 
         .btn:hover {
             transform: scale(1.05);
-            background-color: #E67300; /* Darker shade of orange */
+            background-color: #E67300;
         }
 
         /* Social Links */
@@ -147,7 +155,7 @@
             text-decoration: none;
             font-size: 16px;
             font-weight: bold;
-            color: #FF7F50; /* Changed to orange */
+            color: #FF7F50;
             transition: color 0.3s;
         }
 
@@ -157,7 +165,7 @@
         }
 
         .social a:hover {
-            color: #E67300; /* Darker shade of orange */
+            color: #E67300;
         }
 
         /* Contact Section */
@@ -175,13 +183,13 @@
         }
 
         .contact a {
-            color: #FF7F50; /* Changed to orange */
+            color: #FF7F50;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .contact a:hover {
-            color: #E67300; /* Darker shade of orange */
+            color: #E67300;
         }
 
         /* Animations */
@@ -238,7 +246,7 @@
         ANJALI CLASSES
     </div>
     <div class="sub-header">कर्तव्य, कर्म और कारण</div>
-    <div class="motto">"Education that opens mind"</div>
+    <div class="motto" id="random-motto"></div>
 
     <div class="content">
         <ul>
@@ -272,8 +280,28 @@
     </div>
 
     <div class="contact">
-        For more information, contact: <br>
-        📞 <a href="tel:+919867666803">+91 98676 66803</a>
+      For more information, contact: <br>
+      📞 <a href="tel:+919867666803">+91 98676 66803</a>
     </div>
 </body>
+<script>
+  // Quotes List
+  const quotes = [
+      "Never stop learning.",
+      "Knowledge is the key to success.",
+      "Learn something new every day.",
+      "Education is a journey, not a destination.",
+      "The more you know, the more you grow.",
+      "Knowledge is a treasure that follows its owner everywhere.",
+      "Mistakes are proof that you are learning.",
+      "A curious mind never stops growing.",
+      "Read, learn, and grow.",
+      "Learning is the passport to the future."
+  ];
+
+  // Select a random quote and update the motto
+  document.getElementById("random-motto").textContent = quotes[Math.floor(Math.random() * quotes.length)];
+</script>
 </html>
+
+    
