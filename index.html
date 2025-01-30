@@ -39,10 +39,13 @@
     }
 
     .sub-header {
-      font-size: 16px;
-      font-weight: 500;
+      font-size: 20px;
+      font-weight: 600;
       margin-top: 10px;
-      color: #555;
+      color: #FF7F50;
+      display: inline-block;
+      /* Keep this to center the text */
+      animation: fadeIn 1.2s;
     }
 
     /* Motto Styling */
@@ -58,6 +61,15 @@
       max-width: 500px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       animation: fadeIn 1.2s;
+      opacity: 1;
+      transition: opacity 0.:5s ease-in-out;
+      
+    }
+
+    .motto span {
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+      /* Add transition for fading effect */
     }
 
     /* Features Section */
@@ -194,19 +206,15 @@
     }
 
     /* Credits Link */
-    /* Credits Link */
     .credits {
       font-size: 17px;
-      /* Increased font size */
       color: #FF7F50;
-      /* Match the color scheme */
       margin-bottom: 15px;
       font-weight: bold;
     }
 
     .credits a {
       color: #FF7F50;
-      /* Match the color scheme */
       text-decoration: none;
     }
 
@@ -271,7 +279,7 @@
     ANJALI CLASSES
   </div>
   <div class="sub-header">कर्तव्य, कर्म और कारण</div>
-  <div class="motto" id="random-motto"></div>
+  <div class="motto" id="random-motto"><span id="motto-text"></span></div>
 
   <div class="content">
     <ul>
@@ -312,24 +320,52 @@
   <div class="credits">
     <a href="credits.html">Credits</a>
   </div>
-</body>
-<script>
-  // Quotes List
-  const quotes = [
-      "Never stop learning.",
-      "Knowledge is the key to success.",
-      "Learn something new every day.",
-      "Education is a journey, not a destination.",
-      "The more you know, the more you grow.",
-      "Knowledge is a treasure that follows its owner everywhere.",
-      "Mistakes are proof that you are learning.",
-      "A curious mind never stops growing.",
-      "Read, learn, and grow.",
-      "Learning is the passport to the future."
-  ];
 
-  // Select a random quote and update the motto
-  document.getElementById("random-motto").textContent = quotes[Math.floor(Math.random() * quotes.length)];
-</script>
+  <script>
+    // Quotes List
+    let quotes = [];
+
+    // Function to fetch quotes from the text file
+    async function loadQuotes() {
+      try {
+        const response = await fetch('quotes.txt');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const text = await response.text();
+        quotes = text.split('\n').map(quote => quote.trim()).filter(quote => quote); // Split by new line and trim whitespace
+        setInitialMotto();
+      } catch (error) {
+        console.error('Error fetching quotes:', error);
+      }
+    }
+
+    // Function to set the initial motto text
+    function setInitialMotto() {
+      const initialIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('motto-text').textContent = quotes[initialIndex];
+      setInterval(changeMotto, 3800); // Change motto every 3.8 seconds
+    }
+
+    // Function to change the motto
+    function changeMotto() {
+      const mottoText = document.getElementById('motto-text');
+
+      // Fade out the text
+      mottoText.style.opacity = 0;
+
+      setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        mottoText.textContent = quotes[randomIndex];
+
+        // Fade back in
+        mottoText.style.opacity = 1;
+      }, 1000); // Wait for fade out to complete before changing text
+    }
+
+    // Load quotes when the document is ready
+    document.addEventListener("DOMContentLoaded", loadQuotes);
+  </script>
+</body>
 
 </html>
