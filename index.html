@@ -16,7 +16,7 @@
       background-color: #f9f9f9;
       color: #333;
     }
-
+    
     /* Header Section */
     .header {
       background-color: #FF7F50;
@@ -29,7 +29,7 @@
       justify-content: center;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-
+    
     .header img {
       width: 70px;
       height: 70px;
@@ -37,17 +37,16 @@
       margin-right: 15px;
       animation: fadeIn 1s;
     }
-
+    
     .sub-header {
       font-size: 20px;
       font-weight: 600;
       margin-top: 10px;
       color: #FF7F50;
       display: inline-block;
-      /* Keep this to center the text */
       animation: fadeIn 1.2s;
     }
-
+    
     /* Motto Styling */
     .motto {
       font-size: 18px;
@@ -62,16 +61,14 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       animation: fadeIn 1.2s;
       opacity: 1;
-      transition: opacity 0.:5s ease-in-out;
-      
+      transition: opacity 0.5s ease-in-out;
     }
-
+    
     .motto span {
       opacity: 1;
       transition: opacity 1s ease-in-out;
-      /* Add transition for fading effect */
     }
-
+    
     /* Features Section */
     .content {
       background-color: white;
@@ -83,19 +80,19 @@
       max-width: 800px;
       animation: fadeIn 1.2s;
     }
-
+    
     .content ul {
       list-style: none;
       padding: 0;
     }
-
+    
     .content li {
       font-size: 18px;
       margin: 10px 0;
       padding-left: 30px;
       position: relative;
     }
-
+    
     .content li::before {
       content: "✔";
       color: #FF7F50;
@@ -104,7 +101,7 @@
       left: 5px;
       font-size: 20px;
     }
-
+    
     /* Buttons Section */
     .buttons {
       background-color: white;
@@ -115,7 +112,7 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       animation: fadeIn 1.4s;
     }
-
+    
     .btn {
       display: block;
       background-color: #FF7F50;
@@ -127,17 +124,64 @@
       text-align: center;
       font-size: 16px;
       font-weight: bold;
-      border-radius: 8px;
+      border-radius: 50px;
+      /* Make buttons rounded */
       cursor: pointer;
       text-decoration: none;
-      transition: transform 0.3s, background-color 0.3s;
+      position: relative;
+      /* For the pseudo-element */
+      overflow: hidden;
+      /* To hide the pseudo-element overflow */
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      /* Smooth transition for transform and box-shadow */
+      outline: none;
+      /* Remove the blue outline */
     }
-
+    
     .btn:hover {
-      transform: scale(1.05);
-      background-color: #E67300;
+      transform: translateY(-3px);
+      /* Lift effect on hover */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      /* Shadow effect on hover */
     }
-
+    
+    .btn:active {
+      transform: translateY(-1px);
+      /* Slightly lower on active */
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      /* Shadow effect on active */
+    }
+    
+    .btn::after {
+      content: "";
+      display: block;
+      height: 100%;
+      width: 100%;
+      border-radius: 100px;
+      /* Match the button's border-radius */
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.2);
+      /* Light overlay effect */
+      z-index: -1;
+      /* Behind the button */
+      transition: transform 0.4s ease;
+      /* Smooth transition for scaling */
+    }
+    
+    .btn:hover::after {
+      transform: scale(1.4) scaleY(1.6);
+      /* Scale effect on hover */
+    }
+    
+    .btn.clicked {
+      border-radius: 0;
+      /* Make buttons rectangular when clicked */
+      transform: scale(1.05);
+      /* Slightly enlarge on click */
+    }
+    
     /* Social Links */
     .social {
       background-color: white;
@@ -148,19 +192,19 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       animation: fadeIn 1.6s;
     }
-
+    
     .social p {
       font-size: 18px;
       font-weight: bold;
       margin-bottom: 10px;
     }
-
+    
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 25px;
     }
-
+    
     .social a {
       display: flex;
       align-items: center;
@@ -171,16 +215,16 @@
       color: #FF7F50;
       transition: color 0.3s;
     }
-
+    
     .social a img {
       width: 24px;
       height: 24px;
     }
-
+    
     .social a:hover {
       color: #E67300;
     }
-
+    
     /* Contact Section */
     .contact {
       background-color: white;
@@ -194,17 +238,17 @@
       font-weight: bold;
       color: #333;
     }
-
+    
     .contact a {
       color: #FF7F50;
       text-decoration: none;
       transition: color 0.3s;
     }
-
+    
     .contact a:hover {
       color: #E67300;
     }
-
+    
     /* Credits Link */
     .credits {
       font-size: 17px;
@@ -212,63 +256,82 @@
       margin-bottom: 15px;
       font-weight: bold;
     }
-
+    
     .credits a {
       color: #FF7F50;
       text-decoration: none;
     }
-
+    
     .credits a:hover {
       color: #FF7F50;
     }
-
+    
     /* Animations */
     @keyframes fadeIn {
       from {
         opacity: 0;
         transform: translateY(20px);
       }
-
+      
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-
+    
     /* Responsive Styles */
     @media only screen and (max-width: 480px) {
       .header {
         font-size: 24px;
         padding: 15px;
       }
-
+      
       .header img {
         width: 50px;
         height: 50px;
       }
-
+      
       .content,
       .buttons {
         padding: 15px;
       }
-
+      
       .btn {
         font-size: 14px;
         padding: 12px;
       }
-
+      
       .social p {
         font-size: 16px;
       }
-
+      
       .social-links {
         flex-direction: column;
         gap: 10px;
       }
-
+      
       .social a {
         font-size: 14px;
       }
+    }
+    
+    * {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+    
+    :target,
+    input,
+    textarea,
+    button,
+    select,
+    a {
+      color: rgba(0, 0, 0, 0);
+    }
+    
+    a:focus,
+    a:active,
+    a:visited {
+      outline: none;
     }
   </style>
 </head>
@@ -280,7 +343,7 @@
   </div>
   <div class="sub-header">कर्तव्य, कर्म और कारण</div>
   <div class="motto" id="random-motto"><span id="motto-text"></span></div>
-
+  
   <div class="content">
     <ul>
       <li>A.I. Based Learning</li>
@@ -291,14 +354,13 @@
       <li>And Many More......!</li>
     </ul>
   </div>
-
+  
   <div class="buttons">
     <a href="updates.html" class="btn">New Update</a>
     <a href="notes.html" class="btn">Notes</a>
     <a href="feestructure.html" class="btn">Fee Structure</a>
-    <a herf="" class="btn"> Flash Cards </a>
   </div>
-
+  
   <div class="social">
     <p>Follow us on social media:</p>
     <div class="social-links">
@@ -312,20 +374,20 @@
       </a>
     </div>
   </div>
-
+  
   <div class="contact">
     For more information, contact: <br>
     📞 <a href="tel:+919867666803">+91 98676 66803</a>
   </div>
-
+  
   <div class="credits">
     <a href="credits.html">Credits</a>
   </div>
-
+  
   <script>
     // Quotes List
     let quotes = [];
-
+    
     // Function to fetch quotes from the text file
     async function loadQuotes() {
       try {
@@ -340,30 +402,46 @@
         console.error('Error fetching quotes:', error);
       }
     }
-
+    
     // Function to set the initial motto text
     function setInitialMotto() {
       const initialIndex = Math.floor(Math.random() * quotes.length);
       document.getElementById('motto-text').textContent = quotes[initialIndex];
-      setInterval(changeMotto, 5000); // Change motto every 3.8 seconds
+      setInterval(changeMotto, 5000); // Change motto every 5 seconds
     }
-
+    
     // Function to change the motto
     function changeMotto() {
       const mottoText = document.getElementById('motto-text');
-
+      
       // Fade out the text
       mottoText.style.opacity = 0;
-
+      
       setTimeout(() => {
         const randomIndex = Math.floor(Math.random() * quotes.length);
         mottoText.textContent = quotes[randomIndex];
-
+        
         // Fade back in
         mottoText.style.opacity = 1;
       }, 1000); // Wait for fade out to complete before changing text
     }
-
+    
+    // Function to handle button click
+    function handleButtonClick(event) {
+      const button = event.currentTarget; // Get the clicked button
+      button.classList.add('clicked'); // Add the clicked class
+      
+      // Remove the class after a short delay to reset the button
+      setTimeout(() => {
+        button.classList.remove('clicked');
+      }, 100); // Adjust the delay as needed
+    }
+    
+    // Add click event listeners to buttons
+    document.querySelectorAll('.btn').forEach(button => {
+      button.addEventListener('click', handleButtonClick);
+    });
+    
     // Load quotes when the document is ready
     document.addEventListener("DOMContentLoaded", loadQuotes);
   </script>
