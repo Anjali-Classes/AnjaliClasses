@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 18px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Select a Chapter</h2>
+    <div id="chapter-buttons"></div>
+</div>
+
+<script>
+    // List of available flashcard files
+    const chapters = {
+        "Gravitation": "flashcards.txt",
+         // Add more chapters here
+    };
+
+    const container = document.getElementById("chapter-buttons");
+
+    // Generate buttons dynamically
+    for (const [chapter, file] of Object.entries(chapters)) {
+        const btn = document.createElement("button");
+        btn.textContent = chapter;
+        btn.onclick = () => {
+            window.location.href = `Flashcards.html?file=${file}`;
+        };
+        container.appendChild(btn);
+    }
+</script>
+
+</body>
+</

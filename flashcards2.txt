@@ -1,0 +1,10 @@
+What is the basis of the modern periodic table?, Atomic number
+Who is known as the father of the periodic table?, Dmitri Mendeleev
+How many periods are there in the modern periodic table?, 7
+How many groups are present in the modern periodic table?, 18
+What is the name of group 17 elements?, Halogens
+Which period contains only two elements?, First period
+What is the general electronic configuration of noble gases?, ns2 np6
+Which block of the periodic table contains transition elements?, d-block
+What is the atomic number of the first alkali metal?, 3
+Which law states that the properties of elements are a periodic function of their atomic numbers?, Periodic Law

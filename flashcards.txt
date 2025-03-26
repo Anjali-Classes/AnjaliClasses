@@ -1,0 +1,27 @@
+Class 10th Gravitation
+What is Gravitation?, Gravitation is the force that pulls objects with mass towards each other.
+Who discover gravitation?, Sir Isaac Newton
+Book name in which Newton gave theory of gravity?, Principia
+Which new branch of mathematics invented by Newton?, Calculus
+Who invented first reflecting telescope?, Sir Isaac Newton
+What is circular motion?, Any object moves in circular path is called as circular motion.
+What is centripetal force?, A force acting on an object moving in a circle and it is directed towards its centre along with radius is called centripetal force
+Centripetal means?, Centre seeking
+Example of centripetal force, i)Moon revolve around sun ii)The Earth rotating around sun.
+Formula of centripetal force?, F =MxV/R²
+Which scientist gave law of planetary motion?, Johannes Kepler
+What is Kepler first law?, The orbit of a planet is an ellipse with the Sun at one of the foci.
+What is Kepler second law?, The line joining the planet and the Sun sweeps equal areas in equal intervals of time.
+What is Kepler third law?, The square of its period of revolution around the Sun is directly proportional to the cube of the mean distance of a planet from the Sun. i.e. T² ¢ R³ therefore T²/R³ = K
+What is limitation of Kepler laws?, He had no explanation as to why planets obey these laws.
+What is Newton's Universal Law of Gravitation?, Every object in the Universe attracts every other object with a definite force. This force is directly proportional to the product of the masses of the two objects and is inversely proportional to the square of the distance between them. F = GxM1xM2/D²
+What is universal gravitational constant?, G is universal gravitational constant whose value is 6.673 x 10^-11 N M²/Kg²
+Which scientist measures the experimental value of G?, Henry Canvendish
+If the mass of a body increases by factor of 2 then force on them will be?, Increase by 4 times
+If the mass of a body decreases by factor of 2 then force on them will be?, Decreases by 4 times
+If the distance between body is increase by 2 times then force on them will be?, Decrease by 4 times
+If the distance between body is decrease by 2 times then force on them will be?, Increase by 4 times
+If the mass of objects increase by 3 times then force between them?, Increase by 9 times
+From where the distance between two objects taken if they are spherical?, From there centre
+From where the distance between two objects taken if they are not spherical?, From there centre of mass
+What is centre of mass?, The centre of mass of an object is the point inside or outside the object at which the total mass of the object can be assumed to be concentrated.

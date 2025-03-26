@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcards</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    
+    .counter {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      font-weight: bold;
+      color: #333;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 10; /* Ensure it stays on top */
+    }
+    
+    .flashcard-container {
+      height: 100vh;
+      width: 100vw;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+    
+    .flashcard {
+      min-height: 100vh;
+      width: 100%;
+      scroll-snap-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      cursor: pointer;
+      perspective: 1000px;
+    }
+    
+    .card-content {
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      transition: transform 0.5s ease;
+      transform-style: preserve-3d;
+      background-color: #fff176;
+      position: relative;
+      margin: 20px 0;
+    }
+    
+    .flashcard.flipped .card-content {
+      transform: rotateY(180deg);
+      background-color: #b9f6ca;
+    }
+    
+    .question,
+    .answer {
+      color: #333;
+      backface-visibility: hidden;
+      width: 100%;
+      padding: 20px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    
+    .question {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-weight: bold;
+      position: relative;
+    }
+    
+    .answer {
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      color: #2e7d32;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotateY(180deg);
+      padding: 30px;
+    }
+    
+    /* Mobile-specific adjustments */
+    @media (max-width: 768px) {
+      .card-content {
+        padding: 20px;
+        width: 85%;
+      }
+      
+      .question,
+      .answer {
+        padding: 15px;
+      }
+    }
+    
+    /* Very small devices */
+    @media (max-width: 480px) {
+      .card-content {
+        width: 90%;
+        padding: 15px;
+      }
+      
+      .question,
+      .answer {
+        padding: 10px;
+      }
+    }
+    
+    * {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+    
+    :target,
+    input,
+    textarea,
+    button,
+    select,
+    a {
+      color: rgba(0, 0, 0, 0);
+    }
+    
+    a:focus,
+    a:active,
+    a:visited {
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="counter">1</div>
+  <div class="flashcard-container"></div>
+  
+  <script>
+    const container = document.querySelector('.flashcard-container');
+    const counter = document.querySelector('.counter');
+    let totalFlashcards = 0;
+
+    // Function to fetch flashcards from a text file
+    async function loadFlashcards(file) {
+      try {
+        const response = await fetch(file); // Use the passed file parameter
+        const text = await response.text();
+        const lines = text.split('\n');
+        
+        totalFlashcards = lines.length; // Store total number of flashcards
+        
+        lines.forEach(line => {
+          const [question, answer] = line.split(',').map(item => item.trim());
+          if (question && answer) {
+            createFlashcard(question, answer);
+          }
+        });
+      } catch (error) {
+        console.error('Error loading flashcards:', error);
+      }
+    }
+    
+    // Function to create a flashcard
+    function createFlashcard(question, answer) {
+      const flashcard = document.createElement('div');
+      flashcard.classList.add('flashcard');
+      
+      flashcard.innerHTML = `
+        <div class="card-content">
+          <div class="question">${question}</div>
+          <div class="answer">${answer}</div>
+        </div>
+      `;
+      
+      // Add click event to toggle between question and answer
+      flashcard.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent default link clicking effect
+        flashcard.classList.toggle('flipped'); // Toggle the flipped class
+      });
+      
+      // Append new flashcard to the container
+      container.appendChild(flashcard);
+    }
+
+    // Update counter based on scroll position
+    function updateCounter() {
+      const scrollPosition = container.scrollTop;
+      const flashcardHeight = window.innerHeight; // Height of each flashcard
+      const currentIndex = Math.round(scrollPosition / flashcardHeight) + 1; // Calculate current flashcard index
+      counter.textContent =  `${currentIndex} of ${totalFlashcards}`; // Update counter text
+    }
+
+    // Load flashcards on page load
+    window.onload = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const file = urlParams.get('file') || 'flashcards.txt'; // Default to flashcards.txt if no file is specified
+      loadFlashcards(file);
+      
+      // Add scroll event listener to update counter
+      container.addEventListener('scroll', updateCounter);
+    };
+  </script>
+</body>
+
+</html>
