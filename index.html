@@ -69,7 +69,7 @@
       transition: opacity 1s ease-in-out;
     }
     
-    /* Features Section */
+    /* Content Section */
     .content {
       background-color: white;
       margin: 20px auto;
@@ -81,36 +81,12 @@
       animation: fadeIn 1.2s;
     }
     
-    .content ul {
-      list-style: none;
-      padding: 0;
-    }
-    
-    .content li {
-      font-size: 18px;
-      margin: 10px 0;
-      padding-left: 30px;
-      position: relative;
-    }
-    
-    .content li::before {
-      content: "✔";
-      color: #FF7F50;
-      font-weight: bold;
-      position: absolute;
-      left: 5px;
-      font-size: 20px;
-    }
-    
     /* Buttons Section */
     .buttons {
-      background-color: white;
-      padding: 20px;
-      margin: 20px auto;
-      border-radius: 8px;
-      max-width: 800px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 1.4s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
     }
     
     .btn {
@@ -118,38 +94,38 @@
       background-color: #FF7F50;
       color: white;
       padding: 15px;
-      margin: 10px auto;
+      margin: 9px auto;
       width: 90%;
       max-width: 300px;
       text-align: center;
       font-size: 16px;
       font-weight: bold;
       border-radius: 50px;
-      /* Make buttons rounded */
       cursor: pointer;
       text-decoration: none;
       position: relative;
-      /* For the pseudo-element */
       overflow: hidden;
-      /* To hide the pseudo-element overflow */
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      /* Smooth transition for transform and box-shadow */
       outline: none;
-      /* Remove the blue outline */
     }
     
-    .btn:hover {
+    
+    
+    .btn:hover,
+    .btn1:hover {
       transform: translateY(-3px);
-      /* Lift effect on hover */
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      /* Shadow effect on hover */
     }
     
-    .btn:active {
+    .btn:active,
+    .btn1:active {
       transform: translateY(-1px);
-      /* Slightly lower on active */
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-      /* Shadow effect on active */
+    }
+    
+    .btn.blue {
+      background-color: #007BFF;
+      /* Blue color for Flashcards button */
     }
     
     .btn::after {
@@ -158,28 +134,23 @@
       height: 100%;
       width: 100%;
       border-radius: 100px;
-      /* Match the button's border-radius */
       position: absolute;
       top: 0;
       left: 0;
       background-color: rgba(255, 255, 255, 0.2);
-      /* Light overlay effect */
       z-index: -1;
-      /* Behind the button */
       transition: transform 0.4s ease;
-      /* Smooth transition for scaling */
     }
     
-    .btn:hover::after {
+    .btn:hover::after,
+    .btn1:hover::after {
       transform: scale(1.4) scaleY(1.6);
-      /* Scale effect on hover */
     }
     
-    .btn.clicked {
+    .btn.clicked,
+    .btn1.clicked {
       border-radius: 0;
-      /* Make buttons rectangular when clicked */
       transform: scale(1.05);
-      /* Slightly enlarge on click */
     }
     
     /* Social Links */
@@ -203,6 +174,8 @@
       display: flex;
       justify-content: center;
       gap: 25px;
+      flex-direction: column;
+      /* Stack vertically */
     }
     
     .social a {
@@ -226,28 +199,7 @@
     }
     
     /* Contact Section */
-    .contact {
-      background-color: white;
-      margin: 20px auto;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 800px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 1.8s;
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
-    }
     
-    .contact a {
-      color: #FF7F50;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    
-    .contact a:hover {
-      color: #E67300;
-    }
     
     /* Credits Link */
     .credits {
@@ -345,22 +297,12 @@
   <div class="motto" id="random-motto"><span id="motto-text"></span></div>
   
   <div class="content">
-    <ul>
-      <li>A.I. Based Learning</li>
-      <li>Feasible Fees</li>
-      <li>100% Scholarship will be given to needy students</li>
-      <li>Current Affairs will be discussed</li>
-      <li>Offline and Online both experiences will be provided as per need</li>
-      <li>And Many More......!</li>
-    </ul>
-  </div>
-  
-  <div class="buttons">
-    <a href="updates.html" class="btn">New Update</a>
-    <a href="notes.html" class="btn">Notes</a>
-    <a href="feestructure.html" class="btn">Fee Structure</a>
-    <a href="standard.html" class="btn">Flashcards</a>
-    <a href="Anjali_Classes_Signed.apk" class="btn">Download Our App</a>
+    <div class="buttons">
+      <a href="updates.html" class="btn">New Update</a>
+      <a href="notes.html" class="btn">Notes</a>
+      <a href="feestructure.html" class="btn">Fee Structure</a>
+      <a href="standard.html" class="btn">Flashcards</a>
+    </div>
   </div>
   
   <div class="social">
@@ -374,13 +316,14 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
         Telegram Anjali Classes
       </a>
+      <a href="Anjali_Classes_Signed.apk">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Logo">
+        Download Our App</a>
+      
+      
     </div>
   </div>
   
-  <div class="contact">
-    For more information, contact: <br>
-    📞 <a href="tel:+919867666803">+91 98676 66803</a>
-  </div>
   
   <div class="credits">
     <a href="credits.html">Credits</a>
