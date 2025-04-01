@@ -1,191 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes - Anjali Classes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        /* Base Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            overflow: hidden; /* Prevent the whole page from scrolling */
-        }
-
-        /* Header */
-        .header {
-            background-color: #4A90E2;
-            color: white;
-            padding: 20px;
-            font-size: 28px;
-            font-weight: bold;
-            text-align: center;
-            width: 100%;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            position: absolute;
-            top: 0;
-            left: 5;
-        }
-
-        /* Notes Container (Full Screen) */
-        .notes-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            text-align: left;
-            width: 90%;
-            max-width: 900px;
-            height: 80vh; /* Occupy most of the screen */
-            overflow-y: auto; /* Scrollable when content overflows */
-            margin-top: 80px; /* Space from the header */
-            margin-bottom: 80px; /* Space for the back button */
-            animation: fadeIn 1s ease-in-out; /* Animation for notes container */
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        .notes-container h2 {
-            color: #4A90E2;
-            text-align: center;
-            font-size: 24px;
-        }
-
-        /* Notes List */
-        .note-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            max-height: 60vh; /* Limit the list height */
-            overflow-y: auto; /* Scrollable when the list is too long */
-        }
-
-        .note-list li {
-            font-size: 18px;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 6px;
-            background: #f1f1f1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: background 0.5s ease, transform 0.3s ease;
-        }
-
-        .note-list li:hover {
-            background: #e3efff;
-            transform: translateY(-3px); /* Lift effect on hover */
-        }
-
-        .note-list a {
-            text-decoration: none;
-            color: #4A90E2;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: color 0.3s ease;
-        }
-
-        .note-list a:hover {
-            color: #357ABD; /* Change color on hover */
-        }
-
-        .note-list a img {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Back Button */
-        .back-btn {
-            display: block;
-            margin-top: 20px;
-            padding: 15px 20px;
-            background-color: #4A90E2;
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
-            text-align: center;
-            width: 200px;
-            transition: background 0.5s ease, transform 0.3s ease;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            bottom: 20px; /* Raise it up from the bottom */
-        }
-
-        .back-btn:hover {
-            background-color: #357ABD;
-            transform: scale(1.05); /* Scale effect on hover */
-        }
-
-        /* Responsive Design */
-        @media only screen and (max-width: 480px) {
-            .header {
-                font-size: 24px;
-            }
-            .notes-container {
-                width: 95%;
-                height: 70vh;
-                padding: 15px;
-            }
-            .note-list li {
-                font-size: 16px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes - Anjali Classes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Base Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    /* Header */
+    .header {
+      background-color: #4A90E2;
+      color: white;
+      padding: 18px 20px;
+      font-size: 28px;
+      font-weight: 600;
+      text-align: center;
+      width: 100%;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      z-index: 100;
+    }
+    
+    /* Main Content Area */
+    .content-wrapper {
+      margin-top: 80px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      padding: 20px 0 30px;
+    }
+    
+    /* Notes Container */
+    .notes-container {
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      width: 90%;
+      max-width: 800px;
+      min-height: 400px;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .notes-container h2 {
+      color: #4A90E2;
+      text-align: center;
+      font-size: 26px;
+      margin-top: 0;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+    
+    /* Notes List */
+    .note-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .note-list li {
+      font-size: 18px;
+      margin: 12px 0;
+      padding: 16px 20px;
+      border-radius: 8px;
+      background: #f5f8ff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+    }
+    
+    .note-list li:hover {
+      background: #e8f1ff;
+      transform: translateY(-3px);
+      border-left: 4px solid #4A90E2;
+      box-shadow: 0 3px 8px rgba(74, 144, 226, 0.1);
+    }
+    
+    .note-list a {
+      text-decoration: none;
+      color: #4A90E2;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: color 0.3s ease;
+      width: 100%;
+    }
+    
+    .note-list a:hover {
+      color: #357ABD;
+    }
+    
+    .note-list a img {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .note-date {
+      font-size: 14px;
+      color: #888;
+      white-space: nowrap;
+    }
+    
+    .note-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    
+    .note-subject {
+      color: #777;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+    
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 30px;
+      color: #777;
+    }
+    
+    .empty-state img {
+      width: 80px;
+      margin-bottom: 15px;
+      opacity: 0.6;
+    }
+    
+    /* Back Button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 25px;
+      padding: 14px 24px;
+      background-color: #4A90E2;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(74, 144, 226, 0.3);
+    }
+    
+    .back-btn:hover {
+      background-color: #357ABD;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(74, 144, 226, 0.4);
+    }
+    
+    /* Responsive Design */
+    @media only screen and (max-width: 600px) {
+      .header {
+        font-size: 24px;
+        padding: 15px;
+      }
+      
+      .content-wrapper {
+        margin-top: 70px;
+      }
+      
+      .notes-container {
+        width: 85%;
+        padding: 20px;
+      }
+      
+      .note-list li {
+        font-size: 16px;
+        padding: 14px 16px;
+      }
+      
+      .note-subject {
+        font-size: 13px;
+      }
+    }
+    
+    * {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+    
+    :target,
+    input,
+    textarea,
+    button,
+    select,
+    a {
+      color: rgba(0, 0, 0, 0);
+    }
+    
+    a:focus,
+    a:active,
+    a:visited {
+      outline: none;
+    }
+  </style>
 </head>
+
 <body>
-
-    <div class="header">📚 Notes</div>
-
+  <div class="header">📚 Notes - Anjali Classes</div>
+  
+  <div class="content-wrapper">
     <div class="notes-container">
-        <h2>Download Notes</h2>
-        <ul class="note-list" id="notes-list">
-            <!-- Notes will be added dynamically here -->
-        </ul>
+      <h2>Download Notes</h2>
+      <ul class="note-list" id="notes-list">
+        <!-- Notes will be added dynamically here -->
+      </ul>
+      <div id="empty-state" class="empty-state" style="display: none;">
+        <img src="/api/placeholder/80/80" alt="No notes">
+        <p>No notes available at the moment.</p>
+      </div>
     </div>
-
-    <a href="index.html" class="back-btn">⬅ Back to Home</a>
-
-    <script>
-        // List of Notes (Modify this to add more)
-        const notes = [
-            { name: "History: The first world war", file: "selfstudys_com_file (1).pdf" },
-        ];
-
-        // Function to Generate Notes List
-        function loadNotes() {
-            const notesList = document.getElementById("notes-list");
-            notes.forEach(note => {
-                let listItem = document.createElement("li");
-                listItem.innerHTML = `
+    
+    <a href="index.html" class="back-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
+      </svg>
+      Back to Home
+    </a>
+  </div>
+  
+  <script>
+    // List of Notes (Modify this to add more)
+    const notes = [
+      {
+        name: "The First World War",
+        file: "selfstudys_com_file (1).pdf",
+        subject: "History",
+        date: "March 15, 2025"
+      },
+      
+    ];
+    
+    // Function to Generate Notes List
+    function loadNotes() {
+      const notesList = document.getElementById("notes-list");
+      const emptyState = document.getElementById("empty-state");
+      
+      if (notes.length === 0) {
+        emptyState.style.display = "block";
+        return;
+      }
+      
+      notes.forEach(note => {
+        let listItem = document.createElement("li");
+        listItem.innerHTML = `
                     <a href="${note.file}" download>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" alt="PDF">
-                        ${note.name}
+                        <div class="note-info">
+                            <span>${note.name}</span>
+                            <span class="note-subject">${note.subject}</span>
+                        </div>
+                        <span class="note-date">${note.date}</span>
                     </a>
                 `;
-                notesList.appendChild(listItem);
-            });
-        }
-
-        // Load Notes on Page Load
-        loadNotes();
-    </script>
-
+        notesList.appendChild(listItem);
+      });
+    }
+    
+    // Load Notes on Page Load
+    document.addEventListener('DOMContentLoaded', loadNotes);
+  </script>
 </body>
+
 </html>
