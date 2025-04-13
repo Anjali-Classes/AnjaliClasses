@@ -2,24 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecting...</title>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
+  <title>Download APK</title>
   <script>
-    // Cache busting by adding a random query param
-    const baseUrl = "https://anjali-classes.github.io/AnjaliClassesNew/";
-    const cacheBuster = "?cb=" + new Date().getTime();
-    window.location.href = baseUrl + cacheBuster;
+    window.onload = () => {
+      const link = document.createElement("a");
+      link.href = "Anjali_Classes_V1.apk";
+      link.download = "Anjali_Classes_V1.apk";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
   </script>
 </head>
 <body>
-  <p>If you are not redirected, 
-    <a id="manual-link" href="https://anjali-classes.github.io/AnjaliClassesNew/">click here</a>.
-  </p>
-  <script>
-    // Also update the fallback link with the cache buster
-    document.getElementById("manual-link").href = baseUrl + cacheBuster;
-  </script>
+  <h1>Downloading Anjali Classes App...</h1>
+  <p>If it doesn't start automatically, <a href="Anjali_Classes_V1.apk" download>click here</a>.</p>
 </body>
 </html>
