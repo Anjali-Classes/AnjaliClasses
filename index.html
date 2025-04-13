@@ -2,12 +2,128 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Download APK</title>
+  <title>Thanks for Downloading - Anjali Classes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (for icons) -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg: #f2f2f7;
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --accent: #0071e3;
+      --white: #fff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 2rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      animation: slideDown 1s ease;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    a.download-btn {
+      background-color: var(--accent);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 12px 24px rgba(0, 113, 227, 0.2);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      animation: bounceIn 1.2s ease;
+    }
+
+    a.download-btn:hover {
+      background-color: #005bb5;
+      transform: scale(1.03);
+    }
+
+    p.note {
+      margin-top: 1.5rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      60% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      a.download-btn {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+      }
+
+      p.note {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+
   <script>
     window.onload = () => {
       const link = document.createElement("a");
       link.href = "Anjali_CLasses_V1.apk";
       link.download = "Anjali_CLasses_V1.apk";
+      link.style.display = "none";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -15,7 +131,11 @@
   </script>
 </head>
 <body>
-  <h1>Downloading Anjali Classes App...</h1>
-  <p>If it doesn't start automatically, <a href="Anjali_CLasses_V1.apk" download>click here</a>.</p>
+  <h1>Thanks for Downloading</h1>
+  <h2>Your app is on its way 🚀</h2>
+  <a class="download-btn" href="Anjali_CLasses_V1.apk" download>
+    <i class="fas fa-download"></i> Click here if the download didn't start
+  </a>
+  <p class="note">This app helps you stay updated with the latest updates , notes, and study material.</p>
 </body>
 </html>
